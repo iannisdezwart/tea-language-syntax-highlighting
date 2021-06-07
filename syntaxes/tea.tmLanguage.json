@@ -21,13 +21,13 @@
 			"include": "#numbers"
 		},
 		{
-			"include": "#function-declarations"
-		},
-		{
-			"include": "#function-calls"
+			"include": "#functions"
 		},
 		{
 			"include": "#stl-types"
+		},
+		{
+			"include": "#user-defined-types"
 		},
 		{
 			"include": "#variables"
@@ -39,23 +39,34 @@
 			"match": "\\/\\/.*\\n"
 		},
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.tea",
-				"match": "\\b(if|else|return|while|for|break|continue|goto)\\b"
-			}]
+			"patterns": [
+				{
+					"comment": "Any control keyword",
+					"name": "keyword.control.tea",
+					"match": "\\b(if|else|return|while|for|break|continue|goto)\\b"
+				},
+				{
+					"comment": "Any other keyword",
+					"name": "keyword.other.tea",
+					"match": "\\b(class)\\b"
+				}
+			]
 		},
 		"string": {
+			"comment": "String literals",
 			"name": "string.quoted.double.tea",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
 				{
+					"comment": "Escape characters within string literals",
 					"name": "constant.character.escape.tea",
 					"match": "\\\\."
 				}
 			]
 		},
 		"char": {
+			"comment": "Character literals",
 			"name": "string.quoted.single.tea",
 			"begin": "'",
 			"end": "'",
@@ -65,12 +76,6 @@
 					"match": "\\\\."
 				}
 			]
-		},
-		"stl-types": {
-			"patterns": [{
-				"name": "storage.type.stl-types.tea",
-				"match": "\\b(u8|i8|u16|i16|u32|i32|u64|i64|void)\\b"
-			}]
 		},
 		"operators": {
 			"patterns": [
@@ -116,15 +121,7 @@
 				}
 			]
 		},
-		"function-declarations": {
-			"patterns": [
-				{
-					"match": "(?<=\\b(u8|i8|u16|i16|u32|i32|u64|i64|void)\\b\\s*)[a-zA-Z_][a-zA-Z_0-9]*(?=\\()",
-					"name": "entity.name.function.tea"
-				}
-			]
-		},
-		"function-calls": {
+		"functions": {
 			"patterns": [
 				{
 					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=\\()",
@@ -135,6 +132,38 @@
 		"numbers": {
 			"match": "(?<!\\w)\\.?\\d(?:(?:[0-9a-zA-Z_\\.])|(?<=[eEpP])[+-])*",
 			"name": "constant.numeric"
+		},
+		"stl-types": {
+			"comment": "Standard Tea types",
+			"patterns": [{
+				"name": "storage.type.stl-types.tea",
+				"match": "\\b(u8|i8|u16|i16|u32|i32|u64|i64|void)\\b"
+			}]
+		},
+		"user-defined-types": {
+			"comment": "User defined types",
+			"patterns": [
+				{
+					"comment": "Class declaration. e.g. #class `MyClass`#",
+					"name": "entity.name.class",
+					"match": "(?<=class\\s*)[a-zA-Z_][a-zA-Z_0-9]*"
+				},
+				{
+					"comment": "Function return value. e.g. #`MyClass` fn()#",
+					"name": "entity.name.class",
+					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=\\s+[a-zA-Z_][a-zA-Z_0-9]*\\()"
+				},
+				{
+					"comment": "Variable declarations. e.g. #`MyClass` my_class = ...#",
+					"name": "entity.name.class",
+					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=\\s+[a-zA-Z_][a-zA-Z_0-9]*\\s*=)"
+				},
+				{
+					"comment": "Namespace resolution. e.g. #`MyClass`::new(...)#",
+					"name": "entity.name.class",
+					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=::)"
+				}
+			]
 		}
 	},
 	"scopeName": "source.tea"
