@@ -21,10 +21,10 @@
 			"include": "#numbers"
 		},
 		{
-			"include": "#functions"
+			"include": "#stl-types"
 		},
 		{
-			"include": "#stl-types"
+			"include": "#functions"
 		},
 		{
 			"include": "#user-defined-types"
