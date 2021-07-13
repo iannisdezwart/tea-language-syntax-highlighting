@@ -144,19 +144,9 @@
 			"comment": "User defined types",
 			"patterns": [
 				{
-					"comment": "Class declaration. e.g. #class `MyClass`#",
+					"comment": "Capital letters indicate classes. e.g. #`MyClass`#",
 					"name": "entity.name.class",
-					"match": "(?<=class\\s*)[a-zA-Z_][a-zA-Z_0-9]*"
-				},
-				{
-					"comment": "Function return value. e.g. #`MyClass` fn()#",
-					"name": "entity.name.class",
-					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=\\s+[a-zA-Z_][a-zA-Z_0-9]*\\()"
-				},
-				{
-					"comment": "Variable declarations. e.g. #`MyClass` my_class = ...#",
-					"name": "entity.name.class",
-					"match": "[a-zA-Z_][a-zA-Z_0-9]*(?=\\s+[a-zA-Z_][a-zA-Z_0-9]*\\s*=)"
+					"match": "\\b([A-Z]\\S*)\\b"
 				},
 				{
 					"comment": "Namespace resolution. e.g. #`MyClass`::new(...)#",
