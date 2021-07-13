@@ -2,6 +2,8 @@
     "name": "tea-language-syntax-highlighting",
     "displayName": "Tea Language Syntax Highlighting",
     "description": "Highlights Your Tea Files",
+		"publisher": "iannisdezwart",
+		"repository": "https://github.com/iannisdezwart/tea-language-syntax-highlighting",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.56.0"
