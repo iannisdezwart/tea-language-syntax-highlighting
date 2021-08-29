@@ -48,7 +48,7 @@
 				{
 					"comment": "Any other keyword",
 					"name": "keyword.other.tea",
-					"match": "\\b(class)\\b"
+					"match": "\\b(class|syscall)\\b"
 				}
 			]
 		},
